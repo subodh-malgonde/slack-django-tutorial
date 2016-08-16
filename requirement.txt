@@ -1,0 +1,7 @@
+Django==1.9.6
+slackclient==1.0.0
+Django==1.9.6
+requests==2.11.0
+six==1.10.0
+slackclient==1.0.0
+websocket-client==0.37.0
