@@ -3,11 +3,13 @@ import requests
 import json
 from django.http import HttpResponse
 from .models import Team
+from django.conf import settings
 
 
 # Create your views here.
 def index(request):
-    return render(request, 'landing.html', {})
+    client_id = settings.SLACK_CLIENT_ID
+    return render(request, 'landing.html', {'client_id': client_id})
 
 
 def slack_oauth(request):
@@ -15,8 +17,8 @@ def slack_oauth(request):
 
     params = {
         'code': code,
-        'client_id': "your_client_id",
-        "client_secret": "your_client_secret"
+        'client_id': settings.SLACK_CLIENT_ID,
+        "client_secret": settings.SLACK_CLIENT_SECRET
     }
     url = 'https://slack.com/api/oauth.access'
     json_response = requests.get(url, params)
